@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/commons::head}"></head>
+<body>
+<header th:replace="~{fragments/commons::nav}"></header>
+<main>
+
+    <div class="welcome mt-1 mb-4">
+
+        <div class="row mt-1 mb-2">
+            <div class="col-12 col-lg-10 mx-auto mt-1 mb-1">
+                <div>
+                    <div class="home-fields" style="height: 90vh; overflow: auto">
+                        <h3 class="my-paintings">TAXI ORDERS LIST</h3>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>USER</th>
+                                <th>FROM</th>
+                                <th>TO</th>
+                                <th>CAR TYPE</th>
+                                <th>PAYMENT METHOD</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="my-paintings" th:each="ride : ${rides}">
+                                <td><span th:text="${ride.user.username}"></span></td>
+                                <td><span th:text="${ride.beginPoint.name}"></span></td>
+                                <td><span th:text="${ride.endPoint.name}"></span></td>
+                                <td><span th:text="${ride.car.name}"></span></td>
+                                <td><span th:text="${ride.paymentMethod.name}"></span></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+<footer th:replace="~{fragments/commons::footer}"></footer>
+<script>
+    setInterval(function () {
+        location.reload();
+    }, 4000);
+</script>
+</body>
+</html>
