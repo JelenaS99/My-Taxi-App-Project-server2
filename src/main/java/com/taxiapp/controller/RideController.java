@@ -42,5 +42,14 @@ public class RideController {
 
     }
 
+    @GetMapping("/getAllRides")
+    public ResponseEntity<List<RideDto>> getAllRides() {
+        List<Ride> rides = rideService.getAllRides();
+        List<RideDto> dtoList = rides.stream().map(RideDto::new).toList();
+        return ResponseEntity.ok(dtoList);
+
+
+    }
+
 
 }
